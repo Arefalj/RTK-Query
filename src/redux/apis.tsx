@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {Product,ProductResponse,SearchResponse} from '../types/products'
 
+const getAuthToken = () => {
+  return ""
+};
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -17,7 +20,12 @@ export const productsApi = createApi({
         url: `products/add`,
         method: "POST",
         body: newProduct,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
       }),
+      
     }),
   }),
 });
